@@ -40,5 +40,6 @@ public class QuickSort {
         QuickSort quickSort = new QuickSort();
         quickSort.sort(array, 0, array.length - 1);
         System.out.println(Arrays.toString(array));
+        //Arrays.sort();
     }
 }
