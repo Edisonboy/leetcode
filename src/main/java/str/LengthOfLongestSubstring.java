@@ -1,14 +1,12 @@
 package str;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
  * @author : zzh
  * create at:  2020/3/18
- * @description:
+ * @description:最长不重复子串
  */
 public class LengthOfLongestSubstring {
 
