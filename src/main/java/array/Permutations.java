@@ -1,5 +1,6 @@
 package array;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,11 +26,31 @@ import java.util.List;
 public class Permutations {
 
     public List<List<Integer>> permute(int[] nums) {
-        return null;
+
+        List<List<Integer>> result = new ArrayList<>();
+        helper(nums, result, new ArrayList<>());
+
+        return result;
     }
 
+    public void helper(int[] nums, List<List<Integer>> results, List<Integer> list) {
+        if (list.size() == nums.length) {
+            results.add(new ArrayList<>(list));
+            return;
+        }
+        for (int i : nums) {
+            if (list.contains(i))
+                continue;
+            list.add(i);
+            helper(nums, results, list);
+            list.remove(list.size() - 1);
+        }
+    }
+
+
     public static void main(String[] args) {
+        int[] nums = {1,2,3};
         Permutations permutations = new Permutations();
-        permutations.notify();
+        permutations.permute(nums);
     }
 }
