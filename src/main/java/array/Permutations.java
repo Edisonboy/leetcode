@@ -27,10 +27,10 @@ public class Permutations {
 
     public List<List<Integer>> permute(int[] nums) {
 
-        List<List<Integer>> result = new ArrayList<>();
-        helper(nums, result, new ArrayList<>());
+        List<List<Integer>> results = new ArrayList<>();
+        helper(nums, results, new ArrayList<>());
 
-        return result;
+        return results;
     }
 
     public void helper(int[] nums, List<List<Integer>> results, List<Integer> list) {
