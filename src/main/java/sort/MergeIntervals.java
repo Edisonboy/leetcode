@@ -2,6 +2,7 @@ package sort;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -23,7 +24,7 @@ public class MergeIntervals {
             return intervals;
 
         // Sort by ascending starting point
-        Arrays.sort(intervals, (i1, i2) -> Integer.compare(i1[0], i2[0]));
+        Arrays.sort(intervals, Comparator.comparingInt(i -> i[0]));
 
         List<int[]> result = new ArrayList<>();
         int[] newInterval = intervals[0];
