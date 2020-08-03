@@ -10,53 +10,33 @@ import java.util.*;
 public class ZigZagLevelOrderTraversal {
 
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        int order = 1;
-        Queue<Queue<TreeNode>> listQueue = new LinkedList();
-        List<List<Integer>> list = new ArrayList<>();
-        if (root == null) return list;
-        Queue<TreeNode> n = new LinkedList<>();
-        n.add(root);
-        listQueue.add(n);
-
-        while (!listQueue.isEmpty()) {
-            Queue<TreeNode> l = listQueue.poll();
-            Queue<TreeNode> newList = new LinkedList<>();
-            if (l.size() > 0) {
-                List<Integer> curList = new ArrayList<>();
-                Queue<TreeNode> r = new LinkedList<>(l);
-                while (!l.isEmpty()) {
-                    TreeNode curNode = l.poll();
-                    curList.add(curNode.val);
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null)
+            return res;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        boolean zigzag = false;
+        while (!queue.isEmpty()) {
+            List<Integer> level = new ArrayList<>();
+            int cnt = queue.size();
+            for (int i = 0; i < cnt; i++) {
+                TreeNode node = queue.poll();
+                if (zigzag) {
+                    level.add(0, node.val);
+                } else {
+                    level.add(node.val);
                 }
-                list.add(curList);
-                r = invert(r);
-                while (!r.isEmpty()) {
-                    TreeNode curNode = r.poll();
-                    if (order == -1) {
-                        if (curNode.left != null) newList.add(curNode.left);
-                        if (curNode.right != null) newList.add(curNode.right);
-                    }else {
-                        if (curNode.right != null) newList.add(curNode.right);
-                        if (curNode.left != null) newList.add(curNode.left);
-                    }
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
                 }
             }
-            order*=-1;
-            if (newList.size() > 0) listQueue.add(newList);
+            res.add(level);
+            zigzag = !zigzag;
         }
-        return list;
-    }
-
-    public Queue<TreeNode> invert(Queue<TreeNode> queue) {
-        Queue<TreeNode> temp = new LinkedList();
-        Stack<TreeNode> stack = new Stack<>();
-        while (!queue.isEmpty()) {
-            stack.push(queue.poll());
-        }
-        while (!stack.empty()) {
-            temp.add(stack.pop());
-        }
-        return temp;
+        return res;
     }
 
 

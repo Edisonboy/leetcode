@@ -34,6 +34,12 @@ public class MergeSort {
         merge2(array, startIndex, endIndex);
     }
 
+    /**
+     * 冒泡排序
+     * @param array
+     * @param startIndex
+     * @param endIndex
+     */
     public void merge(int[] array, int startIndex, int endIndex) {
         while (startIndex < endIndex) {
             for (int j = startIndex + 1; j <= endIndex; j++) {
@@ -47,6 +53,12 @@ public class MergeSort {
         }
     }
 
+    /**
+     * 双指针
+     * @param array
+     * @param startIndex
+     * @param endIndex
+     */
     public void merge2(int[] array, int startIndex, int endIndex) {
         int[] temp = new int[array.length];
         int mid = (startIndex + endIndex) >> 1;
@@ -84,7 +96,7 @@ public class MergeSort {
                 mergeSort.sort(array);
                 i++;
             }
-            System.out.println("time:[" + (System.currentTimeMillis() - startTime));
+            System.out.println("time:" + (System.currentTimeMillis() - startTime));
         }
         {
             long startTime = System.currentTimeMillis();
@@ -94,7 +106,7 @@ public class MergeSort {
                 mergeSort.sort2(array);
                 i++;
             }
-            System.out.println("time:[" + (System.currentTimeMillis() - startTime));
+            System.out.println("time:" + (System.currentTimeMillis() - startTime));
         }
     }
 
