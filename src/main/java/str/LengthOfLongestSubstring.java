@@ -6,10 +6,19 @@ import java.util.Map;
 /**
  * @author : zzh
  * create at:  2020/3/18
- * @description:最长不重复子串
+ * @description:no.3
+ *
+ * 最长不重复子串
  */
 public class LengthOfLongestSubstring {
 
+    /**
+     * 滑动窗口
+     * 双指针i,j  j-i+1就是当前窗口的长度
+     * map保存窗口指针
+     * @param s
+     * @return
+     */
     public int lengthOfLongestSubstring(String s) {
         if (s == null || s.length() ==0) {
             return 0;
