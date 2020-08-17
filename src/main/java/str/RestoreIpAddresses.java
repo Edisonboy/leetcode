@@ -32,13 +32,16 @@ public class RestoreIpAddresses {
      * 退出条件是：sec==4 && pos == s.length()
      * @param s
      * @param list
-     * @param pos
-     * @param res
-     * @param sec
+     * @param pos 当前字符的指针
+     * @param res 拼接的ip
+     * @param sec 分区
      */
     void helper(String s, List<String> list, int pos, String res, int sec){
-        if(sec == 4 && pos == s.length()) {
-            list.add(res);
+        // 剪枝条件
+        if(sec == 4) {
+            if (pos == s.length()) {
+                list.add(res);
+            }
             return;
         }
 
@@ -55,14 +58,14 @@ public class RestoreIpAddresses {
     public static void main(String[] args) {
 
         RestoreIpAddresses demo = new RestoreIpAddresses();
-        demo.restoreIpAddresses("25525511135");
+        System.out.println(demo.restoreIpAddresses("25525511135"));
 
         //Function<Integer,Integer> test1= i -> i + 1;
         //System.out.println(calculate(test1,5));
-        List<String> list = calculate(12, i -> {
+        /*List<String> list = calculate(12, i -> {
             System.out.println(i);
             return demo.restoreIpAddresses("");
-        });
+        });*/
 
     }
     public static <T, R> R calculate(T param, Function<T, R> test){
