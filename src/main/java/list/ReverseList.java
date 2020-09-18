@@ -1,28 +1,27 @@
 package list;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
 import java.util.Stack;
 
 /**
  * @author : zzh
  * create at:  2020/7/17
  * @description: 反转链表
- *
+ * <p>
  * 输入: 1->2->3->4->5->NULL
  * 输出: 5->4->3->2->1->NULL
- *
  */
 public class ReverseList {
 
     /**
      * 使用堆栈实现 时间复杂度 O(n)
+     *
      * @param head
      * @return
      */
     public ListNode reverseList(ListNode head) {
-        if (head == null) return null;
+        if (head == null)
+            return null;
         Stack<Integer> stack = new Stack<>();
         while (head != null) {
             stack.push(head.val);
@@ -39,6 +38,7 @@ public class ReverseList {
 
     /**
      * 迭代方法
+     *
      * @param head
      * @return
      */
@@ -78,7 +78,5 @@ public class ReverseList {
         ListNode(int val) {
             this.val = val;
         }
-
-
     }
 }

@@ -41,7 +41,7 @@ public class SortList {
             slow = slow.next;
             fast = fast.next.next;
         }
-
+        // 把两个链表断开连接 prev 与 slow
         prev.next = null;
 
         // step 2. sort each half
